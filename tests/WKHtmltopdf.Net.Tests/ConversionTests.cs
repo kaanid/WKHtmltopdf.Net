@@ -13,7 +13,7 @@ namespace WKHtmltopdf.Net.Tests
         public async Task WK_GetVersionAsync()
         {
             string message = null;
-            Engine wk = new Engine();
+            WKHtmltoPdfProvider wk = new WKHtmltoPdfProvider();
             wk.Error += (sender,e) => {
                 message = e.Exception.Message;
             };
@@ -27,7 +27,7 @@ namespace WKHtmltopdf.Net.Tests
         public async Task WK_ExecuteAsync_Unknown()
         {
             string message = null;
-            Engine wk = new Engine();
+            WKHtmltoPdfProvider wk = new WKHtmltoPdfProvider();
             wk.Error += (sender, e) => {
                 message = e.Exception.Message;
             };
@@ -40,7 +40,7 @@ namespace WKHtmltopdf.Net.Tests
         public async Task WK_ConvertAsync()
         {
             string message = null;
-            Engine wk = new Engine();
+            WKHtmltoPdfProvider wk = new WKHtmltoPdfProvider();
             wk.Error += (sender, e) => {
                 message = e.Exception.Message;
             };

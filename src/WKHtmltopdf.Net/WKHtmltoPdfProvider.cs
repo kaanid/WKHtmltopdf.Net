@@ -8,10 +8,10 @@ using WKHtmltopdf.Net.Extensions;
 
 namespace WKHtmltopdf.Net
 {
-    public class Engine
+    public class WKHtmltoPdfProvider
     {
         private readonly string _wkhtmltopdfPath;
-        public Engine(string wkhtmltopdfPath=null)
+        public WKHtmltoPdfProvider(string wkhtmltopdfPath=null)
         {
             if(wkhtmltopdfPath==null)
             {
