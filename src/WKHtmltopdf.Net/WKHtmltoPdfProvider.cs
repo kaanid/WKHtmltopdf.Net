@@ -35,8 +35,7 @@ namespace WKHtmltopdf.Net
         {
             var parameters = new WKHtmltopdfParameters
             {
-                Task = Enums.WKHtmltopdfTask.Version,
-                GlobalOptions=new GlobalOptions { Version=true}
+                Task = Enums.WKHtmltopdfTask.Version
             };
 
             await ExecuteAsync(parameters, cancellationToken);

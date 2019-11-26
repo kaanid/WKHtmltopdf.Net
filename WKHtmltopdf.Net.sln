@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{9AE07F9B-037C-46D4-A360-07DF911DC1AF}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{08953CCE-F7F8-4DC6-8BF1-A327F72C41B5}"
 EndProject
@@ -11,9 +16,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B11D6AB3-0DC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BAD58B14-8579-48E1-9FF4-38E15D68FB47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WKHtmltopdf.Net.Tests", "tests\WKHtmltopdf.Net.Tests\WKHtmltopdf.Net.Tests.csproj", "{5F68EDB0-CE39-40EF-A4B3-38DE296359C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WKHtmltopdf.Net.Tests", "tests\WKHtmltopdf.Net.Tests\WKHtmltopdf.Net.Tests.csproj", "{5F68EDB0-CE39-40EF-A4B3-38DE296359C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WKHtmltopdf.Net.Sample", "samples\WKHtmltopdf.Net.Sample\WKHtmltopdf.Net.Sample.csproj", "{587F1105-257A-4BAF-8A6B-4062D7A9C3D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WKHtmltopdf.Net.Sample", "samples\WKHtmltopdf.Net.Sample\WKHtmltopdf.Net.Sample.csproj", "{587F1105-257A-4BAF-8A6B-4062D7A9C3D6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WKHtmltopdf.Net", "src\WKHtmltopdf.Net\WKHtmltopdf.Net.csproj", "{2AE81850-B881-4217-BD74-81D16271F9E1}"
 EndProject

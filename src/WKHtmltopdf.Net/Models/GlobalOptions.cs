@@ -44,9 +44,5 @@ namespace WKHtmltopdf.Net.Models
         /// The title of the generated pdf file (The title of the first document is used if not specified)
         /// </summary>
         public string Title { set; get; }
-        /// <summary>
-        /// Output version information and exit
-        /// </summary>
-        public bool Version { set; get; }
     }
 }
