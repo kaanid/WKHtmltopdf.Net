@@ -7,6 +7,6 @@ namespace WKHtmltopdf.Net.Models
     internal class WKHtmltoimageParameters : BaseParameters
     {
         internal ImageGenralOptions GenralOptions {set;get;}
-        internal InputBase[] InputFiles { get; set; }
+        internal InputBase InputFile { get; set; }
     }
 }

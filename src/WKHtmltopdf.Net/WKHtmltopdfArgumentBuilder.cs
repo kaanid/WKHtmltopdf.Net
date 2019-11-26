@@ -5,35 +5,19 @@ using WKHtmltopdf.Net.Models;
 
 namespace WKHtmltopdf.Net
 {
-    internal class WKHtmltopdfArgumentBuilder
+    internal class WKHtmltopdfArgumentBuilder: BaseArgumentBuilder<WKHtmltopdfParameters>
     {
-        public string Build(WKHtmltopdfParameters parameters)
-        {
-            if (parameters.HasCustomArguments)
-                return parameters.CustomArguments;
-
-            switch(parameters.Task)
-            {
-                case Enums.WKHtmltopdfTask.Convert:
-                    return Convert(parameters);
-                case Enums.WKHtmltopdfTask.Version:
-                    return " -V";
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(parameters.Task));
-            }
-        }
-
-        private string Convert(WKHtmltopdfParameters parameters)
+        protected override string Convert(WKHtmltopdfParameters parameters)
         {
             var commandBuilder = new StringBuilder();
-            if(parameters.GlobalOptions!=null)
+            if (parameters.GlobalOptions != null)
             {
                 if (parameters.GlobalOptions.Copies > 1)
                 {
                     commandBuilder.Append($" --copies {parameters.GlobalOptions.Copies}");
                 }
 
-                if(parameters.GlobalOptions.NoCollate)
+                if (parameters.GlobalOptions.NoCollate)
                 {
                     commandBuilder.Append($" --no-collate");
                 }
@@ -58,7 +42,7 @@ namespace WKHtmltopdf.Net
                     commandBuilder.Append($" -O Landscape");
                 }
 
-                if (parameters.GlobalOptions.PageSize!=Enums.PageSizeType.A4)
+                if (parameters.GlobalOptions.PageSize != Enums.PageSizeType.A4)
                 {
                     commandBuilder.Append($" -s {parameters.GlobalOptions.PageSize.ToString()}");
                 }
@@ -69,9 +53,9 @@ namespace WKHtmltopdf.Net
                 commandBuilder.Append($" {info.FullPath}");
             }
 
-            if(parameters.PageOptions!=null)
+            if (parameters.PageOptions != null)
             {
-                if(parameters.PageOptions.PrintMediaType)
+                if (parameters.PageOptions.PrintMediaType)
                 {
                     commandBuilder.Append($" --print-media-type");
                 }
