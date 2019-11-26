@@ -29,9 +29,9 @@ namespace WKHtmltopdf.Net
 
             using(var process=new Process() { StartInfo=startInfo})
             {
-                process.ErrorDataReceived += (sender, e) => OnData(new ConversionDataEventArgs(e.Data,parameters.InputFile,parameters.OutputFile));
+                process.ErrorDataReceived += (sender, e) => OnData(new ConversionDataEventArgs(e.Data,parameters.InputFiles,parameters.OutputFile));
                 process.ErrorDataReceived += (sender, e) => WKHtmltopdfProcessOnErrorDataReceived(e,parameters,ref caughtException,message);
-                process.OutputDataReceived += (sender, e) => WKHtmltopdfProcessOutputDataReceived(new ConversionDataEventArgs(e.Data, parameters.InputFile, parameters.OutputFile), parameters, successMessage);
+                process.OutputDataReceived += (sender, e) => WKHtmltopdfProcessOutputDataReceived(new ConversionDataEventArgs(e.Data, parameters.InputFiles, parameters.OutputFile), parameters, successMessage);
 
                 Task<int> task = null;
 
@@ -55,7 +55,7 @@ namespace WKHtmltopdf.Net
                 else
                 {
                     parameters.OutputMessage = string.Join(";", successMessage);
-                    OnConversionCompleted(new ConversionCompleteEventArgs(parameters.InputFile, parameters.OutputFile, parameters.OutputMessage));
+                    OnConversionCompleted(new ConversionCompleteEventArgs(parameters.InputFiles, parameters.OutputFile, parameters.OutputMessage));
                 }
             }
 
@@ -78,7 +78,7 @@ namespace WKHtmltopdf.Net
         {
             var exceptionMessage = GetExceptionMessage(message);
             var excetpion = new WKHtmltopdfException(exceptionMessage, caughtException, exitCode);
-            OnConversionError(new ConversionErrorEventArgs(excetpion, parameters.InputFile, parameters.OutputFile));
+            OnConversionError(new ConversionErrorEventArgs(excetpion, parameters.InputFiles, parameters.OutputFile));
         }
 
         private string GetExceptionMessage(List<string> message) => message.Count ==2 ? message[1] + message[0]: string.Join(string.Empty, message);
@@ -97,7 +97,7 @@ namespace WKHtmltopdf.Net
 
                 //}
                 var progreeData = new ProgressData(TimeSpan.FromSeconds(10),TimeSpan.FromMinutes(10),null,null,null,null);
-                OnProgressChanged(new ConversionProgressEventArgs(progreeData, parameters.InputFile, parameters.OutputFile));
+                OnProgressChanged(new ConversionProgressEventArgs(progreeData, parameters.InputFiles, parameters.OutputFile));
             }
             catch(Exception ex)
             {

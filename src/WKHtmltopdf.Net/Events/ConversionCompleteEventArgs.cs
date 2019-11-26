@@ -6,13 +6,13 @@ namespace WKHtmltopdf.Net.Events
 {
     public class ConversionCompleteEventArgs:EventArgs
     {
-        public ConversionCompleteEventArgs(ConvertFile input,ConvertFile output,string meessge=null)
+        public ConversionCompleteEventArgs(ConvertFile[] inputs,ConvertFile output,string meessge=null)
         {
-            Input = input;
+            Inputs = inputs;
             Output = output;
             Message = meessge;
         }
-        public ConvertFile Input { get; }
+        public ConvertFile[] Inputs { get; }
         public ConvertFile Output { get; }
         public string Message { get; }
     }

@@ -13,7 +13,7 @@ namespace WKHtmltopdf.Net
         internal PageOptions PageOptions { get; set; }
         internal WKHtmltopdfTask Task { get; set; }
         internal ConvertFile OutputFile { get; set; }
-        internal ConvertFile InputFile { get; set; }
+        internal ConvertFile[] InputFiles { get; set; }
         internal string OutputMessage { get; set; }
     }
 }

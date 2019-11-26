@@ -42,20 +42,30 @@ namespace WKHtmltopdf.Net
             return parameters.OutputMessage;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        public async Task<string> GetUnknownAsync(CancellationToken cancellationToken = default)
+        public async Task<ConvertFile> ConvertAsync(ConvertFile input, ConvertFile output, GlobalOptions globalOptions, PageOptions pageOptions, CancellationToken cancellationToken = default)
         {
-            var parameters = new WKHtmltopdfParameters
-            {
-                CustomArguments="-y -V"
+            return await ConvertAsync(new List<ConvertFile> { input }, output,globalOptions,pageOptions, cancellationToken);
+        }
+
+        public async Task<ConvertFile> ConvertAsync(List<ConvertFile> inputs, ConvertFile output,GlobalOptions globalOptions,PageOptions pageOptions,CancellationToken cancellationToken = default)
+        {
+            var parameters = new WKHtmltopdfParameters 
+            { 
+                Task=Enums.WKHtmltopdfTask.Convert,
+                InputFiles=inputs.ToArray(),
+                OutputFile=output,
+                GlobalOptions=globalOptions,
+                PageOptions=pageOptions
             };
 
             await ExecuteAsync(parameters, cancellationToken);
-            return parameters.OutputMessage;
+            return parameters.OutputFile;
+        }
+
+        public async Task ExecuteAsync(string arguments, CancellationToken cancellationToken = default)
+        {
+            var parameters = new WKHtmltopdfParameters { CustomArguments = arguments };
+            await ExecuteAsync(parameters, cancellationToken);
         }
 
         private async Task ExecuteAsync(WKHtmltopdfParameters parameters, CancellationToken cancellationToken = default)

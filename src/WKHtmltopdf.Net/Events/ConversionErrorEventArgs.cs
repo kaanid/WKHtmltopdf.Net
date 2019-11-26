@@ -7,15 +7,15 @@ namespace WKHtmltopdf.Net.Events
 {
     public class ConversionErrorEventArgs:EventArgs
     {
-        public ConversionErrorEventArgs(WKHtmltopdfException exception,ConvertFile input,ConvertFile output)
+        public ConversionErrorEventArgs(WKHtmltopdfException exception,ConvertFile[] inputs,ConvertFile output)
         {
             Exception = exception;
-            Input = input;
+            Inputs = inputs;
             Output = output;
         }
 
         public WKHtmltopdfException Exception { get; }
-        public ConvertFile Input { get; }
+        public ConvertFile[] Inputs { get; }
         public ConvertFile Output { get; }
     }
 }
