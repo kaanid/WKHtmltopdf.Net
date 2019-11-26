@@ -7,7 +7,7 @@ namespace WKHtmltopdf.Net.Events
 {
     public class ConversionProgressEventArgs:EventArgs
     {
-        internal ConversionProgressEventArgs(ProgressData progressData, ConvertFile[] inputs, ConvertFile output)
+        internal ConversionProgressEventArgs(ProgressData progressData, InputBase[] inputs, ConvertFile output)
         {
             Inputs = inputs;
             Output = output;
@@ -26,9 +26,9 @@ namespace WKHtmltopdf.Net.Events
         public double? Bitrate { get; }
         public TimeSpan TotalDuration { get; }
         public ConvertFile Output { get; }
-        public ConvertFile[] Inputs { get; }
+        public InputBase[] Inputs { get; }
 
         public override string ToString()
-            => $"[{Inputs?[0].FileInfo?.Name} => {Output?.FileInfo?.Name}]\nFrame: {Frame}\nFps: {Fps}\nSize: {SizeKb}kb\nProcessedDuration: {ProcessedDuration}\nBitrate: {Bitrate}\nTotalDuration: {TotalDuration}";
+            => $"[{Inputs?[0].FullPath} => {Output?.FileInfo?.Name}]\nFrame: {Frame}\nFps: {Fps}\nSize: {SizeKb}kb\nProcessedDuration: {ProcessedDuration}\nBitrate: {Bitrate}\nTotalDuration: {TotalDuration}";
     }
 }

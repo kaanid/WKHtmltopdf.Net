@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using WKHtmltopdf.Net.Events;
 using WKHtmltopdf.Net.Extensions;
+using WKHtmltopdf.Net.Models;
 
 namespace WKHtmltopdf.Net
 {
@@ -42,12 +43,12 @@ namespace WKHtmltopdf.Net
             return parameters.OutputMessage;
         }
 
-        public async Task<ConvertFile> ConvertAsync(ConvertFile input, ConvertFile output, GlobalOptions globalOptions, PageOptions pageOptions, CancellationToken cancellationToken = default)
+        public async Task<ConvertFile> ConvertAsync(InputBase input, ConvertFile output, GlobalOptions globalOptions, PageOptions pageOptions, CancellationToken cancellationToken = default)
         {
-            return await ConvertAsync(new List<ConvertFile> { input }, output,globalOptions,pageOptions, cancellationToken);
+            return await ConvertAsync(new List<InputBase> { input }, output,globalOptions,pageOptions, cancellationToken);
         }
 
-        public async Task<ConvertFile> ConvertAsync(List<ConvertFile> inputs, ConvertFile output,GlobalOptions globalOptions,PageOptions pageOptions,CancellationToken cancellationToken = default)
+        public async Task<ConvertFile> ConvertAsync(List<InputBase> inputs, ConvertFile output,GlobalOptions globalOptions,PageOptions pageOptions,CancellationToken cancellationToken = default)
         {
             var parameters = new WKHtmltopdfParameters 
             { 

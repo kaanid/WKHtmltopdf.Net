@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WKHtmltopdf.Net
+namespace WKHtmltopdf.Net.Models
 {
     public class PageOptions
     {

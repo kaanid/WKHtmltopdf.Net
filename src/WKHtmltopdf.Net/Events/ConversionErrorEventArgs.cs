@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using WKHtmltopdf.Net.Exceptions;
+using WKHtmltopdf.Net.Models;
 
 namespace WKHtmltopdf.Net.Events
 {
     public class ConversionErrorEventArgs:EventArgs
     {
-        public ConversionErrorEventArgs(WKHtmltopdfException exception,ConvertFile[] inputs,ConvertFile output)
+        public ConversionErrorEventArgs(WKHtmltopdfException exception, InputBase[] inputs,ConvertFile output)
         {
             Exception = exception;
             Inputs = inputs;
@@ -15,7 +16,7 @@ namespace WKHtmltopdf.Net.Events
         }
 
         public WKHtmltopdfException Exception { get; }
-        public ConvertFile[] Inputs { get; }
+        public InputBase[] Inputs { get; }
         public ConvertFile Output { get; }
     }
 }

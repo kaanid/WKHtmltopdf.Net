@@ -65,7 +65,7 @@ namespace WKHtmltopdf.Net
 
             foreach (var info in parameters.InputFiles)
             {
-                commandBuilder.Append($" {info.FileInfo.FullName}");
+                commandBuilder.Append($" {info.FullPath}");
             }
 
             if(parameters.PageOptions!=null)

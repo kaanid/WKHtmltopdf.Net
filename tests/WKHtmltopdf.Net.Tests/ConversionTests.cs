@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using WKHtmltopdf.Net.Models;
 using Xunit;
 
 namespace WKHtmltopdf.Net.Tests
@@ -37,7 +38,7 @@ namespace WKHtmltopdf.Net.Tests
         }
 
         [Fact]
-        public async Task WK_ConvertAsync()
+        public async Task WK_ConvertAsync_file()
         {
             string message = null;
             WKHtmltoPdfProvider wk = new WKHtmltoPdfProvider();
@@ -45,13 +46,28 @@ namespace WKHtmltopdf.Net.Tests
                 message = e.Exception.Message;
             };
 
-            var f1 = new ConvertFile("test.html");
-            var f2 = new ConvertFile("11.pdf");
-
-
+            var f1 = new InputFile("test.html");
+            var f2 = new ConvertFile("test.pdf");
             var f4=await wk.ConvertAsync(f1,f2,null,null);
 
             var flag=File.Exists(f4.FileInfo.FullName);
+            Assert.True(flag);
+        }
+
+        [Fact]
+        public async Task WK_ConvertAsync_url()
+        {
+            string message = null;
+            WKHtmltoPdfProvider wk = new WKHtmltoPdfProvider();
+            wk.Error += (sender, e) => {
+                message = e.Exception.Message;
+            };
+
+            var f1 = new InputUrl("http://www.baidu.com");
+            var f2 = new ConvertFile("baidu.pdf");
+            var f4 = await wk.ConvertAsync(f1, f2, null, null);
+
+            var flag = File.Exists(f4.FileInfo.FullName);
             Assert.True(flag);
         }
     }

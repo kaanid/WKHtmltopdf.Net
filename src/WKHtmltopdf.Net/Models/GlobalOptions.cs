@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using WKHtmltopdf.Net.Enums;
 
-namespace WKHtmltopdf.Net
+namespace WKHtmltopdf.Net.Models
 {
     public class GlobalOptions
     {

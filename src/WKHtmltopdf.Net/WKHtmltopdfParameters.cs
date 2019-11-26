@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using WKHtmltopdf.Net.Enums;
+using WKHtmltopdf.Net.Models;
 
 namespace WKHtmltopdf.Net
 {
@@ -13,7 +14,7 @@ namespace WKHtmltopdf.Net
         internal PageOptions PageOptions { get; set; }
         internal WKHtmltopdfTask Task { get; set; }
         internal ConvertFile OutputFile { get; set; }
-        internal ConvertFile[] InputFiles { get; set; }
+        internal InputBase[] InputFiles { get; set; }
         internal string OutputMessage { get; set; }
     }
 }
